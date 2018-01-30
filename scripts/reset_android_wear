@@ -1,0 +1,8 @@
+#!/bin/bash
+
+adb shell "pm clear com.google.android.gm"
+sleep 5
+adb shell "reboot" 
+sleep 30
+adb wait-for-device
+adb shell "am start -a android.bluetooth.adapter.action.REQUEST_DISCOVERABLE" 

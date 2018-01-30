@@ -1,0 +1,20 @@
+# Kill startup message
+startup_message off
+
+# It displays a status line at the bottom of the terminal which shows what 
+# window you're in and a list of the other windows.
+# termcapinfo xterm "ks=E[?1lE:kuE[A:kd=E[B:kl=E[D:kr=E[C:kh=E[5~:kH=E [F"
+# hardstatus alwayslastline "%{-b gk}%-w%{+b kg}%50>%n %t%{-b gk}%+w%<"
+
+# 256 Color term
+term screen-256color
+
+# Increase the scrollback
+defscrollback 100000
+
+# screen -t work
+
+altscreen on
+
+caption always"[%H]%-w(%n-%t)%+w[%d/%m %c]"
+hardstatus alwayslastline '%{= G}[ %{G}%H %{g}][%{= w}%?%-Lw%?%{= R}%n*%f %t%?%{= R}(%u)%?%{= w}%+Lw%?%= %{= g}][%{B}%Y-%m-%d %c%{g}]'
