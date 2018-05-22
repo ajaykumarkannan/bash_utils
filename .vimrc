@@ -35,11 +35,10 @@ augroup END
 " nnoremap / q/i
 " nnoremap ? q?i
 
-" Key mapping for tabbed editing - use gt gT instead, jackass 
-" map <C-t><up> :tabr<cr>
-" map <C-t><down> :tabl<cr>
-" map <C-t><left> :tabp<cr>
-" map <C-t><right> :tabn<cr>
+" Key mappings for buffers
+map <C-t>b :buffers<cr>
+map <C-t><left> :bprevious<cr>
+map <C-t><right> :bnext<cr>
 
 " Key Mappings for buffers
 map <C-t>b :buffers<cr>
@@ -128,8 +127,8 @@ set background=dark
 " set background=light
 
 " Save folding
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview 
+" autocmd BufWinLeave *.* mkview
+" autocmd BufWinEnter *.* silent loadview
 
 " configure airline
 if !exists('g:airline_symbols')
@@ -155,3 +154,4 @@ set listchars=tab:T>
 
 " TagbarToggle
 nmap <F8> :TagbarToggle<CR>
+
