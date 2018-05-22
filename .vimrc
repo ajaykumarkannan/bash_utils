@@ -90,13 +90,13 @@ set tabpagemax=100
 vnoremap // y/<C-R>"<CR>
 
 " Remove all trailing whitespace on save
-" autocmd BufWritePre * :%s/\s\+$//e
-" highlight ExtraWhitespace ctermbg=red guibg=red
-" match ExtraWhitespace /\s\+$/
-" autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-" autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-" autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-" autocmd BufWinLeave * call clearmatches()
+autocmd BufWritePre * :%s/\s\+$//e
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 " Fix backspace
 set backspace=indent,eol,start
@@ -123,27 +123,35 @@ set tags=tags;/
 " Ctags better match - match if only one, else provide list
 nnoremap <C-]> g<C-]>
 
+" Background Color
 set background=dark
 " set background=light
 
 " Save folding
-" autocmd BufWinLeave *.* mkview
-" autocmd BufWinEnter *.* silent loadview 
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview 
 
-" if !exists('g:airline_symbols')
-"    let g:airline_symbols = {}
-" endif
-" let g:airline_symbols.space = "\ua0"
 " configure airline
+if !exists('g:airline_symbols')
+   let g:airline_symbols = {}
+endif
 " let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 2
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#show_splits = 1
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#show_tab_type = 1
+let g:airline#extensions#tabline#close_symbol = '×'
+let g:airline#extensions#tabline#show_close_button = 0
 
 " Highlight Tabs
-" highlight SpecialKey ctermfg=1
-" set list
-" set listchars=tab:T>
+highlight SpecialKey ctermfg=1
+set list
+set listchars=tab:T>
 
 " TagbarToggle
 nmap <F8> :TagbarToggle<CR>
-
-set path+=$LLVM_INC/**
-set path+=$LLVM_LIB/**
