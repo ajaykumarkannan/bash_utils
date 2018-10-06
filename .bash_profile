@@ -8,6 +8,4 @@ then
    source ~/.bashrc
 fi
 
-export PATH=~/bin:$PATH:~/scripts:/Users/ajaykumarkannan/Android/sdk/platform-tools
-
 fortune | cowsay
