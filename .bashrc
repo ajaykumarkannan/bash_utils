@@ -86,6 +86,10 @@ export HISTIGNORE='ls:bg:fg:history:df:clear:pwd'
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
+# Custom per-device aliases
+if [ -f ~/.bash_aliases_custom ]; then
+  . ~/.bash_aliases_custom
+fi
 
 # Default Editor Settings
 export EDITOR=vim
