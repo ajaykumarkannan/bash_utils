@@ -585,7 +585,7 @@ let g:airline_powerline_fonts = 1
 " else
 "   let g:airline#extensions#tabline#left_sep = '暭'
 "   let g:airline#extensions#tabline#left_alt_sep = '噍'
-" 
+"
 "   " powerline symbols
 "   let g:airline_left_sep = '暭'
 "   let g:airline_left_alt_sep = '噍'
