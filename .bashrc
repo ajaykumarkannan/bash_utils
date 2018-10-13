@@ -1,4 +1,4 @@
-
+# Command Prompt
 export MYPS='$(echo -n "${PWD/#$HOME/~}" | awk -F "/" '"'"'{
   if (length($0) > 14) {
     if (NF>2)
@@ -60,12 +60,12 @@ function fwait() {
 # Find a file and open in vim
 function vgfind(){
   gvim -p $(find -iname "$@")
-  
+
 }
 export -f vgfind
 function vfind(){
   vim -p $(find -iname "$@")
-  
+
 }
 export -f vfind
 
@@ -87,10 +87,6 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
-# grep options
-export GREP_OPTIONS='--color=auto'
-export GREP_COLOR='01;34;04'
-
 # Default Editor Settings
 export EDITOR=vim
 export VISUAL="gvim --nofork"
@@ -101,16 +97,9 @@ set -o vi
 # shopt Settings
 # shopt -q -s cdspell      # Correct dir spellings
 shopt -q -s checkwinsize # Make sure display get updated when terminal window get resized
-# shopt -q -s extglob      # Turn on the extended pattern matching features 
+# shopt -q -s extglob      # Turn on the extended pattern matching features
 # shopt -q -s cmdhist      # Make multi-line commandsline in history
 # shopt -q -s nocaseglob
 # shopt -q -s nocasematch  #
 # set -o notify            # Get immediate notification of background job termination
-
-# This was a good hack but it becomes exceedingly slow sometimes. Also, when I exit, I have to do it twice.
-# SOURCED=$(which p4 2> /dev/null)
-# if [ "$SOURCED" != "/tools/perforce/2014.1/linux64/p4" ];
-# then
-#   arc shell p4,gvim,emacs && exit
-# fi
 
