@@ -1,14 +1,21 @@
-# Command Prompt
-export MYPS='$(echo -n "${PWD/#$HOME/~}" | awk -F "/" '"'"'{
-  if (length($0) > 14) {
-    if (NF>2)
-      print  ".../" $(NF-1) "/" $NF;
-    else print $1 "/.../" $NF;
-    }
-  else print $0;
-}'"'"')'
-
-PS1='$(eval "echo ${MYPS}") $ '
+# Last two dirs (not working on new versions of bash)
+# export MYPS='$(echo -n "${PWD/#$HOME/~}" | awk -F "/" '"'"'{
+#   if (length($0) > 14) {
+#     if (NF>2)
+#       print  ".../" $(NF-1) "/" $NF;
+#     else print $1 "/.../" $NF;
+#     }
+#   else print $0;
+# }'"'"')'
+# 
+# PS1='$(eval "echo ${MYPS}") $ '
+function short_path() {
+  local IFS=/ P=${PWD#?} F
+  for F in $P; do echo -n /${F::1}; done
+  [[ $P ]] || echo -n /
+  echo -n ${F:1}
+}
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]`short_path`\[\033[00m\]\$ '
 
 # Everybody prefers 'mcd' to do this
 function mcd() {
