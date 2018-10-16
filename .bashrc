@@ -7,7 +7,7 @@
 #     }
 #   else print $0;
 # }'"'"')'
-# 
+#
 # PS1='$(eval "echo ${MYPS}") $ '
 function short_path() {
   local IFS=/ P=${PWD#?} F
@@ -15,7 +15,8 @@ function short_path() {
   [[ $P ]] || echo -n /
   echo -n ${F:1}
 }
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]`short_path`\[\033[00m\]\$ '
+export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]`short_path`\[\033[00m\]\$ '
+export PS2="> "
 
 # Everybody prefers 'mcd' to do this
 function mcd() {
@@ -24,6 +25,65 @@ function mcd() {
 }
 export -f mcd
 export MANPATH=$MANPATH
+
+# This waits for all makes to finish including gmake
+function waitformake(){
+echo "Waiting for make"
+  while :
+  do
+    COUNT=$(ps axu | grep make | grep -v grep | wc -l)
+    if [ $COUNT -eq 0 ]; then
+      break
+    else
+      sleep 5
+    fi
+  done
+  echo "Done waiting for make"
+}
+
+# This function waits for the folder to be created and then opens it
+function cdw(){
+  if [ "$#" -ne "1" ]; then
+    echo "Usage: cdw <folder>"
+    return
+  fi
+
+  echo "Waiting for folder..."
+  while :
+  do
+    if [ -d "$@" ]; then
+      break
+    else
+      sleep 5
+    fi
+  done
+  echo "Found folder, opening..."
+  cd "$@"
+}
+
+# This function sets the title for the tmux pane
+win_title() {
+  if [ "$#" -ne "1" ]; then
+    echo "Usage: win_title <filename>"
+    return
+  fi
+  # set xterm title (and tmux pane title)
+  PROMPT_COMMAND="echo -ne \"\033]0;$1\007\""
+}
+
+colors_tmux() {
+  if [ -z $1 ]; then
+    BREAK=1
+  else
+    BREAK=$1
+  fi
+  for i in {0..255} ; do
+    printf "\x1b[38;5;${i}mcolour${i} \t"
+    if [ $(( i % $BREAK )) -eq $(($BREAK-1)) ] ; then
+      printf "\n"
+    fi
+  done
+}
 
 # This function waits for the file to exist and then opens it
 function svim(){
@@ -37,8 +97,9 @@ function svim(){
   do
     if [ -f "$@" ]; then
       break
+    else
+      sleep 5
     fi
-    sleep 5
   done
   echo "Found file. Opening..."
   sleep 1
@@ -57,8 +118,9 @@ function fwait() {
   do
     if [[ -f "$@" || -d "$@" ]]; then
       break
+    else
+      sleep 5
     fi
-    sleep 5
   done
   echo "Found file."
   sleep 1
@@ -82,12 +144,58 @@ function qfind(){
 }
 export -f qfind
 
+# Repeat command till successful
+function do_while(){
+  while :
+  do
+    $1 "${@:2}"  && break
+  sleep 5
+  done
+}
+export -f do_while
+
+# Refresh DISPLAY env
+function refresh() {
+  export $(tmux show-environment | grep DISPLAY)
+}
+export -f refresh
+
+function u() {
+  cd $(printf "%0.s../" $(seq 1 $1 ));
+}
+export -f u
+
+# Stopwatch function
+function stopwatch() {
+local BEGIN=$(date +%s)
+
+while true; do
+  local NOW=$(date +%s)
+  local DIFF=$(($NOW - $BEGIN))
+  local MINS=$(($DIFF / 60 % 60))
+  local SECS=$(($DIFF % 60))
+  local HOURS=$(($DIFF / 3600 % 24))
+  local DAYS=$(($DIFF / 86400))
+  local DAYS_UNIT
+  [ "$DAYS" == 1 ] && DAYS_UNIT="Day" || DAYS_UNIT="Days"
+
+  printf "\r  %d %s, %02d:%02d:%02d  " $DAYS $DAYS_UNIT $HOURS $MINS $SECS
+  sleep 0.25
+done
+}
+export -f stopwatch
+
 # BASH History hacks
 export HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
 export HISTFILESIZE=10000
 export HISTSIZE=10000
 export HISTIGNORE='ls:bg:fg:history:df:clear:pwd'
+
+# Custom per-device bashrc
+if [ -f $HOME/.bashrc.custom ]; then
+  . $HOME/.bashrc.custom
+fi
 
 # Aliases
 if [ -f ~/.bash_aliases ]; then
