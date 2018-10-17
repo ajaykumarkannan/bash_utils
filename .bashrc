@@ -208,7 +208,7 @@ fi
 
 # Default Editor Settings
 export EDITOR=vim
-export VISUAL="gvim --nofork"
+export VISUAL=vim
 
 # Bash vi bindings
 set -o vi
