@@ -487,6 +487,8 @@ nnoremap <Leader>o :.Gbrowse<CR>
 autocmd FileType c setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 expandtab
 
+" LLVM
+autocmd FileType llvm setlocal nowrap
 
 " perl
 
