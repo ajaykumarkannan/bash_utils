@@ -492,7 +492,6 @@ autocmd FileType llvm setlocal nowrap
 
 " perl
 
-
 " python
 " vim-python
 augroup vimrc-python
@@ -501,6 +500,9 @@ augroup vimrc-python
       \ formatoptions+=croq softtabstop=4
       \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 augroup END
+
+" systemverilog
+autocmd FileType systemverilog setlocal nowrap
 
 " jedi-vim
 let g:jedi#popup_on_dot = 0
