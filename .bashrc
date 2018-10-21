@@ -48,7 +48,7 @@ function cdw(){
     return
   fi
 
-  echo "Waiting for folder..."
+  echo "Waiting for $@"
   while :
   do
     if [ -d "$@" ]; then
@@ -57,7 +57,7 @@ function cdw(){
       sleep 5
     fi
   done
-  echo "Found folder, opening..."
+  echo "Opening $@"
   cd "$@"
 }
 
