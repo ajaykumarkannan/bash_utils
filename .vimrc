@@ -488,7 +488,7 @@ autocmd FileType c setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 expandtab
 
 " cpp
-autocmd FileType cpp setlocal cindent cino=ji,(0,ws,Ws)
+autocmd FileType cpp setlocal cindent cino=j1,(0,ws,Ws
 
 " LLVM
 autocmd FileType llvm setlocal nowrap
