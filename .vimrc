@@ -74,6 +74,7 @@ Plug 'honza/vim-snippets'
 "" Color
 Plug 'tomasr/molokai'
 Plug 'KeitaNakamura/neodark.vim'
+Plug 'tomasiser/vim-code-dark'
 
 "*****************************************************************************
 "" Custom bundles
@@ -170,10 +171,12 @@ set number
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
-  colorscheme molokai
+  " colorscheme molokai
   " colorscheme neodark
+  colorscheme codedark
 endif
 
+set mouse=a
 set mousemodel=popup
 set t_Co=256
 set guioptions=egmrti
@@ -485,10 +488,12 @@ nnoremap <Leader>o :.Gbrowse<CR>
 
 " c
 autocmd FileType c setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd FileType c setlocal nowrap
 
 " cpp
+autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd FileType cpp setlocal cindent cino=j1,(0,ws,Ws
+autocmd FileType cpp setlocal nowrap
 
 " LLVM
 autocmd FileType llvm setlocal nowrap
@@ -570,4 +575,5 @@ if !exists('g:airline_symbols')
 endif
 
 let g:airline_powerline_fonts = 1
+let g:airline_theme = 'codedark'
 
