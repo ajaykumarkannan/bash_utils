@@ -533,7 +533,7 @@ let g:airline#extensions#virtualenv#enabled = 1
 " Default highlight is better than polyglot
 let g:polyglot_disabled = ['python']
 let python_highlight_all = 1
-"
+
 " CtrlP
 set runtimepath^=~/.vim/ctrlp.vim
 let g:ctrlp_by_filename = 1
