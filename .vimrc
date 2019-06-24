@@ -75,6 +75,7 @@ Plug 'honza/vim-snippets'
 Plug 'tomasr/molokai'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'tomasiser/vim-code-dark'
+Plug 'fcpg/vim-fahrenheit'
 
 "*****************************************************************************
 "" Custom bundles
@@ -173,6 +174,7 @@ let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
   " colorscheme molokai
   " colorscheme neodark
+  " colorscheme fahrenheit
   colorscheme codedark
 endif
 
@@ -247,6 +249,7 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
+let g:airline_detect_spell=0
 
 "*****************************************************************************
 "" Abbreviations
@@ -489,11 +492,13 @@ nnoremap <Leader>o :.Gbrowse<CR>
 " c
 autocmd FileType c setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd FileType c setlocal nowrap
+autocmd FileType c setlocal spell
 
 " cpp
 autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd FileType cpp setlocal cindent cino=j1,(0,ws,Ws
 autocmd FileType cpp setlocal nowrap
+autocmd FileType cpp setlocal spell
 
 " LLVM
 autocmd FileType llvm setlocal nowrap
