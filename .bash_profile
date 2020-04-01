@@ -4,4 +4,6 @@ then
    source ~/.bashrc
 fi
 
-fortune | cowsay
+if shopt -q login_shel; then
+  fortune | cowsay
+fi
