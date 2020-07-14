@@ -31,7 +31,7 @@ function waitformake(){
 echo "Waiting for make"
   while :
   do
-    COUNT=$(ps axu | grep make | grep -v grep | wc -l)
+    COUNT=$(ps axu | sed 's|.*-- ||g' | grep make | grep -v grep | wc -l)
     if [ $COUNT -eq 0 ]; then
       break
     else
@@ -103,7 +103,7 @@ function svim(){
   done
   echo "Found file. Opening..."
   sleep 1
-  gvim "$@"
+  vim "$@"
 }
 
 # This function waits for a file to exist and then exits
@@ -222,3 +222,5 @@ shopt -q -s checkwinsize # Make sure display get updated when terminal window ge
 # shopt -q -s nocasematch  #
 # set -o notify            # Get immediate notification of background job termination
 
+# Bash completion for git
+source /etc/bash_completion.d/git

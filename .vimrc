@@ -77,6 +77,9 @@ Plug 'KeitaNakamura/neodark.vim'
 Plug 'tomasiser/vim-code-dark'
 Plug 'fcpg/vim-fahrenheit'
 
+" vim p4 plugin
+Plug 'ngemily/vim-vp4'
+
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
@@ -94,7 +97,7 @@ Plug 'c9s/perlomni.vim'
 
 " python
 "" Python Bundle
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 
 
@@ -242,8 +245,9 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-let g:airline_theme = 'powerlineish'
+" let g:airline_theme = 'powerlineish'
 " let g:airline_theme = 'neodark'
+let g:airline_theme = 'codedark'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -493,12 +497,14 @@ nnoremap <Leader>o :.Gbrowse<CR>
 autocmd FileType c setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd FileType c setlocal nowrap
 autocmd FileType c setlocal spell
+autocmd FileType c setlocal colorcolumn=80
 
 " cpp
 autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd FileType cpp setlocal cindent cino=j1,(0,ws,Ws
 autocmd FileType cpp setlocal nowrap
 autocmd FileType cpp setlocal spell
+autocmd FileType cpp setlocal colorcolumn=80
 
 " LLVM
 autocmd FileType llvm setlocal nowrap
@@ -518,15 +524,15 @@ augroup END
 autocmd FileType systemverilog setlocal nowrap
 
 " jedi-vim
-let g:jedi#popup_on_dot = 0
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = "<leader>d"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#rename_command = "<leader>r"
-let g:jedi#show_call_signatures = "0"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#smart_auto_mappings = 0
+" let g:jedi#popup_on_dot = 0
+" let g:jedi#goto_assignments_command = "<leader>g"
+" let g:jedi#goto_definitions_command = "<leader>d"
+" let g:jedi#documentation_command = "K"
+" let g:jedi#usages_command = "<leader>n"
+" let g:jedi#rename_command = "<leader>r"
+" let g:jedi#show_call_signatures = "0"
+" let g:jedi#completions_command = "<C-Space>"
+" let g:jedi#smart_auto_mappings = 0
 
 " syntastic
 let g:syntastic_python_checkers=['python', 'flake8']
@@ -580,5 +586,4 @@ if !exists('g:airline_symbols')
 endif
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'codedark'
 
