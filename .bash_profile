@@ -5,5 +5,7 @@ then
 fi
 
 if shopt -q login_shell; then
-  fortune | cowsay
+  if command -v fortune && command -v cowsay; then
+    fortune | cowsay
+  fi
 fi

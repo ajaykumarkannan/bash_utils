@@ -20,8 +20,8 @@ export PS2="> "
 
 # Everybody prefers 'mcd' to do this
 function mcd() {
-	mkdir -p "$@"
-	cd "$@"
+  mkdir -p "$@"
+  cd "$@"
 }
 export -f mcd
 export MANPATH=$MANPATH
@@ -223,4 +223,6 @@ shopt -q -s checkwinsize # Make sure display get updated when terminal window ge
 # set -o notify            # Get immediate notification of background job termination
 
 # Bash completion for git
-source /etc/bash_completion.d/git
+if [ -f /etc/bash_completion.d/git ]; then
+  source /etc/bash_completion.d/git
+fi
