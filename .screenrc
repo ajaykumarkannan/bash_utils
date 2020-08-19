@@ -12,8 +12,6 @@ term screen-256color
 # Increase the scrollback
 defscrollback 100000
 
-# screen -t work
-
 altscreen on
 
 caption always"[%H]%-w(%n-%t)%+w[%d/%m %c]"

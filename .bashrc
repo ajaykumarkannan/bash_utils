@@ -1,14 +1,3 @@
-# Last two dirs (not working on new versions of bash)
-# export MYPS='$(echo -n "${PWD/#$HOME/~}" | awk -F "/" '"'"'{
-#   if (length($0) > 14) {
-#     if (NF>2)
-#       print  ".../" $(NF-1) "/" $NF;
-#     else print $1 "/.../" $NF;
-#     }
-#   else print $0;
-# }'"'"')'
-#
-# PS1='$(eval "echo ${MYPS}") $ '
 function short_path() {
   local IFS=/ P=${PWD#?} F
   for F in $P; do echo -n /${F::1}; done
@@ -20,8 +9,8 @@ export PS2="> "
 
 # Everybody prefers 'mcd' to do this
 function mcd() {
-	mkdir -p "$@"
-	cd "$@"
+  mkdir -p "$@"
+  cd "$@"
 }
 export -f mcd
 export MANPATH=$MANPATH
@@ -31,7 +20,7 @@ function waitformake(){
 echo "Waiting for make"
   while :
   do
-    COUNT=$(ps axu | grep make | grep -v grep | wc -l)
+    COUNT=$(ps axu | sed 's|.*-- ||g' | grep make | grep -v grep | wc -l)
     if [ $COUNT -eq 0 ]; then
       break
     else
@@ -103,7 +92,7 @@ function svim(){
   done
   echo "Found file. Opening..."
   sleep 1
-  gvim "$@"
+  vim "$@"
 }
 
 # This function waits for a file to exist and then exits
@@ -217,8 +206,10 @@ set -o vi
 shopt -q -s checkwinsize # Make sure display get updated when terminal window get resized
 
 # Git Bash completion
-if [ -f ~/src/git-bash-completion/git-completion.bash ] ; then 
+if [ -f ~/src/git-bash-completion/git-completion.bash ] ; then
   . ~/src/git-bash-completion/git-completion.bash
+elif [ -f /etc/bash_completion.d/git ]; then
+  source /etc/bash_completion.d/git
 else
   echo "No git autocomplete."
   echo "Run: git clone https://github.com/markgandolfo/git-bash-completion.git ~/src/git-bash-completion"
