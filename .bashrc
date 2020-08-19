@@ -214,11 +214,12 @@ export VISUAL=vim
 set -o vi
 
 # shopt Settings
-# shopt -q -s cdspell      # Correct dir spellings
 shopt -q -s checkwinsize # Make sure display get updated when terminal window get resized
-# shopt -q -s extglob      # Turn on the extended pattern matching features
-# shopt -q -s cmdhist      # Make multi-line commandsline in history
-# shopt -q -s nocaseglob
-# shopt -q -s nocasematch  #
-# set -o notify            # Get immediate notification of background job termination
 
+# Git Bash completion
+if [ -f ~/src/git-bash-completion/git-completion.bash ] ; then 
+  . ~/src/git-bash-completion/git-completion.bash
+else
+  echo "No git autocomplete."
+  echo "Run: git clone https://github.com/markgandolfo/git-bash-completion.git ~/src/git-bash-completion"
+fi
