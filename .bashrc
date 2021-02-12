@@ -214,3 +214,4 @@ else
   echo "No git autocomplete."
   echo "Run: git clone https://github.com/markgandolfo/git-bash-completion.git ~/src/git-bash-completion"
 fi
+
