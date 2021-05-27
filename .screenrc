@@ -16,3 +16,6 @@ altscreen on
 
 caption always"[%H]%-w(%n-%t)%+w[%d/%m %c]"
 hardstatus alwayslastline '%{= G}[ %{G}%H %{g}][%{= w}%?%-Lw%?%{= R}%n*%f %t%?%{= R}(%u)%?%{= w}%+Lw%?%= %{= g}][%{B}%Y-%m-%d %c%{g}]'
+
+escape ^Bb
+
