@@ -215,3 +215,9 @@ else
   echo "Run: git clone https://github.com/markgandolfo/git-bash-completion.git ~/src/git-bash-completion"
 fi
 
+# Set up fzf
+if [ -f ~/.fzf.bash ]; then
+  source ~/.fzf.bash
+  export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+fi
+
