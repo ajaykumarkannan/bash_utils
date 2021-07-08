@@ -71,3 +71,7 @@
 
 ; Change leader key to "," instead of SPACE
 (setq doom-leader-key ",")
+
+; Load adoc when needed
+(autoload 'adoc-mode "adoc-mode" nil t)
+
