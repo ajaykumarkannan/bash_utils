@@ -122,3 +122,7 @@ source $ZSH/oh-my-zsh.sh
 # Custom options
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
+
+# Use vi mode
+bindkey -v
+export KEYTIMEOUT=1
