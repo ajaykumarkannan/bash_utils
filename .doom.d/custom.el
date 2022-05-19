@@ -5,6 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
  '(column-number-mode t)
+ '(package-selected-packages (quote (irony)))
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(tool-bar-mode nil))
