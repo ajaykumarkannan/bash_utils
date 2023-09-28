@@ -1,8 +1,10 @@
 #!/bin/bash
 
+sudo -E apt install -y zsh
+
 # Install omz
 # TODO this has to be done interactively
-# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 
 # Plugins
