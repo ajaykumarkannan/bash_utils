@@ -86,6 +86,7 @@ plugins=(
   tmux
   zsh-autosuggestions
   zsh-syntax-highlighting
+  zsh-vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -126,3 +127,10 @@ setopt hist_ignore_space
 # Use vi mode
 bindkey -v
 export KEYTIMEOUT=1
+
+export PATH=$PATH:$HOME/.toolbox/bin
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+export EDITOR=/usr/bin/vim
+
+source <(fzf --zsh)
