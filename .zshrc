@@ -91,6 +91,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -122,10 +123,11 @@ source $ZSH/oh-my-zsh.sh
 
 # Custom options
 setopt hist_ignore_all_dups
-setopt hist_ignore_space
+setopt HIST_IGNORE_SPACE
 
 # Use vi mode
 bindkey -v
+bindkey '^I' fzf-completion
 export KEYTIMEOUT=1
 
 export PATH=$PATH:$HOME/.toolbox/bin
